@@ -10,7 +10,7 @@ namespace MovieDatabase.Controllers
         public IActionResult Index()
         {
             MovieFakeDatabase list = new MovieFakeDatabase();
-            var mylist = list.GetAllMovies().ToList();
+            var mylist = list.GetAllMovies();
             return View(mylist);
         }
     }

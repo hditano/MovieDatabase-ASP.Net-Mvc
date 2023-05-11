@@ -3,12 +3,15 @@
     Layout = "_Layout";
 }
 
-<h3>Hello from Movie Controller</h3>
-<ul>
-    @foreach(var item in Model)
+<div class="container text-left row px-10">
+    @foreach (var item in Model)
     {
-        <li>
-            @item.Description
-        </li>
+        <div class="card col-sm-4 m-4 p-2" style="width: 18rem">
+            <div class="card-body">
+                <h5 class="card-title">@item.Title</h5>
+                <h6 class="card-subtitle">@item.Description</h6>
+                <p class="card-text">@item.MovieGenre</p>
+            </div>
+        </div>
     }
-</ul>
+</div>
