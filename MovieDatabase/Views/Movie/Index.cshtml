@@ -1,0 +1,14 @@
+﻿@model List<Movie>
+@{
+    Layout = "_Layout";
+}
+
+<h3>Hello from Movie Controller</h3>
+<ul>
+    @foreach(var item in Model)
+    {
+        <li>
+            @item.Description
+        </li>
+    }
+</ul>
