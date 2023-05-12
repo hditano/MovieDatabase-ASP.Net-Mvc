@@ -8,6 +8,7 @@ namespace MovieDatabase.Services
         {
             var item1 = new Movie
             {
+                MovieId = 1,
                 Title = "Duro de Matar",
                 Description = "Pelicula de accion",
                 MovieGenre = Enums.Genre.Action
@@ -15,6 +16,7 @@ namespace MovieDatabase.Services
 
             var item2 = new Movie
             {
+                MovieId = 2,
                 Title = "Lalita",
                 Description = "Sosito",
                 MovieGenre = Enums.Genre.ForAllFamily

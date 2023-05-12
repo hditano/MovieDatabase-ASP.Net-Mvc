@@ -2,11 +2,10 @@
 @{
     Layout = "_Layout";
 }
-
-<div class="container text-left row px-10">
+<div class="container text-left row px-10 grid gap-5">
     @foreach (var item in Model)
     {
-        <div class="card col-sm-4 m-4 p-2" style="width: 18rem">
+        <div class="card" style="width: 18rem">
             <div class="card-body">
                 <h5 class="card-title">@item.Title</h5>
                 <h6 class="card-subtitle">@item.Description</h6>
