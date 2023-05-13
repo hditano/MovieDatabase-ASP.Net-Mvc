@@ -5,8 +5,8 @@
 <div class="container text-left row px-10 grid gap-5">
     @foreach (var item in Model)
     {
-        <div class="card btn-link text-decoration-none text-center" style="width: 18rem">
-            <a class="no-underline text-opacity-75 text-black" asp-action="SingleMovie" asp-route-id="@item.MovieId">
+        <div class="card btn-link p-0 text-decoration-none text-center" style="width: 18rem">
+            <a class="no-underline text-opacity-75 text-black a-card" asp-action="SingleMovie" asp-route-id="@item.MovieId">
                 <div class="card-body">
                     <div class="col-md-6 mx-auto">
                         <img src="https://image.tmdb.org/t/p/w500/yFihWxQcmqcaBR31QM6Y8gT6aYV.jpg" class="img-fluid img-thumbnail">

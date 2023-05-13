@@ -7,10 +7,12 @@ namespace MovieDatabase.Controllers
     public class MovieController : Controller
     {
         public MovieFakeDatabase _list;
+        private MovieContext _context { get; set; }
 
-        public MovieController()
+        public MovieController(MovieContext context)
         {
             _list = new MovieFakeDatabase();
+            _context = context;
         }
 
         [HttpGet]
@@ -31,20 +33,30 @@ namespace MovieDatabase.Controllers
         }
 
         [HttpGet]
+        //public IActionResult SingleMovie(int id)
+        //{
+        //    var movie = _list.GetAllMovies().FirstOrDefault(m => m.MovieId == id);
+            
+        //    if (movie is null)
+        //        return NotFound("Error");
+        //    var myIdMovie = new Movie
+        //    {
+        //        Title = movie.Title,
+        //        Description = movie.Description,
+        //        MovieGenre = movie.MovieGenre
+                
+        //    };
+        //    return View(myIdMovie);
+        //}
+
         public IActionResult SingleMovie(int id)
         {
-            var movie = _list.GetAllMovies().FirstOrDefault(m => m.MovieId == id);
-            
-            if (movie is null)
-                return NotFound("Error");
-            var myIdMovie = new Movie
-            {
-                Title = movie.Title,
-                Description = movie.Description,
-                MovieGenre = movie.MovieGenre
-                
-            };
-            return View(myIdMovie);
+            var query = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
+
+            if (query is null)
+                return NotFound();
+
+            return View(query);
         }
     }
 }

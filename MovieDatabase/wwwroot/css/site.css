@@ -24,3 +24,8 @@ body {
 .no-underline {
     text-decoration: none !important;
 }
+
+.a-card:hover {
+    transition: background-color 1.5s ease-out;
+    background-color: #e9ecef;
+}
