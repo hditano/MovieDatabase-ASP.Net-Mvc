@@ -1,0 +1,13 @@
+﻿@model Movie
+@{
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <div class="text-secondary border-top col-md-4">
+        <h2>@Model.Title</h2>
+        <img src="https://image.tmdb.org/t/p/w500/yFihWxQcmqcaBR31QM6Y8gT6aYV.jpg" class="img-thumbnail img-fluid" />
+        <h4>@Model.Description</h4>
+        <h6>@Model.MovieGenre</h6>
+    </div>
+</div>

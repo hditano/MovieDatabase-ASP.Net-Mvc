@@ -6,23 +6,45 @@ namespace MovieDatabase.Controllers
 {
     public class MovieController : Controller
     {
+        public MovieFakeDatabase _list;
+
+        public MovieController()
+        {
+            _list = new MovieFakeDatabase();
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
-            MovieFakeDatabase list = new MovieFakeDatabase();
-            var mylist = list.GetAllMovies();
-            return View(mylist);
+            return View(_list.GetAllMovies());
         }
         [HttpGet]
         public IActionResult RandomMovie()
         {
             Random rand = new Random();
-            MovieFakeDatabase list = new MovieFakeDatabase();
-            var mylist = list.GetAllMovies();
-            Movie? movie = mylist.FirstOrDefault(m => m.MovieId == rand.Next(1, 2));
+
+            Movie? movie = _list.GetAllMovies().FirstOrDefault(m => m.MovieId == rand.Next(1, 3));
+
             if (movie is null)
-                return NotFound();
+                return NotFound("Value not found");
             return View(movie);
+        }
+
+        [HttpGet]
+        public IActionResult SingleMovie(int id)
+        {
+            var movie = _list.GetAllMovies().FirstOrDefault(m => m.MovieId == id);
+            
+            if (movie is null)
+                return NotFound("Error");
+            var myIdMovie = new Movie
+            {
+                Title = movie.Title,
+                Description = movie.Description,
+                MovieGenre = movie.MovieGenre
+                
+            };
+            return View(myIdMovie);
         }
     }
 }
