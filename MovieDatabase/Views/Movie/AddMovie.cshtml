@@ -1,0 +1,32 @@
+﻿@using MovieDatabase.Enums
+@model Movie
+
+<h2>Add Form</h2>
+
+<form asp-controller="Movie" asp-action="AddNewMovie" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Title">Title</label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MovieGenre">Genre</label>
+        <select asp-for="MovieGenre" asp-items="Html.GetEnumSelectList<Genre>()">
+            <option selected="selected" value="">Please select</option>
+        </select>
+    </div>
+
+    <input type="hidden" asp-for="MovieId" />
+
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a asp-controller="Movie" asp-action="AddMovie" class="btn btn-primary">Cancel</a>
+    </div>
+</form>
