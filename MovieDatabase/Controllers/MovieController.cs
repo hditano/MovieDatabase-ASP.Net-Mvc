@@ -23,7 +23,7 @@ namespace MovieDatabase.Controllers
         public IActionResult RandomMovie()
         {
             Random rand = new Random();
-            var random = rand.Next(1, 3);
+            var random = rand.Next(1, 5);
             var movie = _context.Movies.Where(m => m.MovieId == random).AsEnumerable();
 
             if (movie is null)

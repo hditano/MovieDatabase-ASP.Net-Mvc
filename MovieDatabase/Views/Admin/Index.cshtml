@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Movie>
+
+<h2>Welcome to Admin Panel</h2>
+
+<div class="container">
+    <table class="table table-hover text-secondary">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in Model)
+            {
+                <tr>
+                    <th>@i.MovieId</th>
+                    <th>@i.Title</th>
+                    <th>@i.Description</th>
+                    <th>@i.MovieGenre</th>
+                    <th>
+                        <div class="btn-group gap-2" role="group">
+                             <a class="btn btn-warning" asp-action="Modify" asp-route-id="@i.MovieId">Modify</a>
+                            <form asp-action="Delete" asp-route-id="@i.MovieId">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
