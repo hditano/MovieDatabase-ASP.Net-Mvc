@@ -22,7 +22,7 @@
                     <th>@i.Description</th>
                     <th>@i.MovieGenre</th>
                     <th>
-                        <div class="btn-group gap-2" role="group">
+                        <div class="btn-group gap-sm-2" role="group">
                              <a class="btn btn-warning" asp-action="Modify" asp-route-id="@i.MovieId">Modify</a>
                             <form asp-action="Delete" asp-route-id="@i.MovieId">
                                 <button type="submit" class="btn btn-danger">Delete</button>

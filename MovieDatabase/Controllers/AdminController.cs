@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MovieDatabase.Models;
 
 namespace MovieDatabase.Controllers
@@ -22,9 +23,21 @@ namespace MovieDatabase.Controllers
         [HttpGet, ActionName("Modify")]
         public async Task<IActionResult> ModifyMovie(int id)
         {
-            Console.WriteLine("Hello");
             var transaction = await _context.Movies.FindAsync(id);
             return View("Edit", transaction);
+        }
+
+        [HttpPost, ActionName("ModifyMovie")]
+        public async Task<IActionResult> Modify(Movie movie)
+        {
+            if (movie.MovieId == 0)
+                return NotFound("Movie not foudn");
+            else
+                _context.Movies.Update(movie);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Admin");
         }
 
         [HttpPost, ActionName("Delete")]

@@ -1,4 +1,30 @@
 ﻿@model Movie
 
 <h2>Welcome to Edit Mode</h2>
-<h2>@Model.Title</h2>
+
+<div class="container">
+    <form asp-controller="Admin" asp-action="ModifyMovie" method="post">
+        <div asp-validation-summary="All"></div>
+        <div class="form-group">
+            <label asp-for="Title">Title</label>
+            <input asp-for="Title" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description">Description</label>
+            <input asp-for="Description" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="MovieGenre">Genre</label>
+            <input asp-for="MovieGenre" class="form-control"/>
+        </div>
+
+        <input type="hidden" asp-for="MovieId" />
+
+        <div>
+            <button type="submit" class="btn btn-primary">Modify</button>
+            <a asp-controller="Admin" asp-action="Modify" class="btn btn-primary">Cancel</a>
+        </div>
+    </form>
+</div>
