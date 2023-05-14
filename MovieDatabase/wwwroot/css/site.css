@@ -29,3 +29,7 @@ body {
     transition: background-color 1.5s ease-out;
     background-color: #e9ecef;
 }
+
+.bg-gray {
+    background-color: #e9ecef !important;
+}

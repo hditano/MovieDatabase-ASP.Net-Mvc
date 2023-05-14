@@ -31,7 +31,7 @@ namespace MovieDatabase.Controllers
         public async Task<IActionResult> Modify(Movie movie)
         {
             if (movie.MovieId == 0)
-                return NotFound("Movie not foudn");
+                return NotFound("Movie not found");
             else
                 _context.Movies.Update(movie);
 

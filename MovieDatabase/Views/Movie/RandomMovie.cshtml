@@ -1,9 +1,9 @@
-﻿@model IQueryable<Movie>
+﻿@model IAsyncEnumerable<Movie>
 
 <h1>Hello Random Movie</h1>
 <div class="card">
     <div class="card-body">
-        @foreach (var i in Model)
+        @await foreach (var i in Model)
         {
             <p>@i.Title</p>
         }

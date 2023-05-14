@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MovieDatabase.Models;
 using MovieDatabase.Services;
 using System.Diagnostics.Eventing.Reader;
@@ -23,8 +24,9 @@ namespace MovieDatabase.Controllers
         public IActionResult RandomMovie()
         {
             Random rand = new Random();
-            var random = rand.Next(1, 5);
-            var movie = _context.Movies.Where(m => m.MovieId == random).AsEnumerable();
+            var random = rand.Next(1, _context.Movies.Count());
+            Console.WriteLine(random);
+            var movie = _context.Movies.Where(m => m.MovieId == random).AsAsyncEnumerable();
 
             if (movie is null)
                 return NotFound("Value not found");
@@ -32,9 +34,9 @@ namespace MovieDatabase.Controllers
         }
 
         [HttpGet]
-        public IActionResult SingleMovie(int id)
+        public async Task<IActionResult> SingleMovie(int id)
         {
-            var query = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
+            var query = await _context.Movies.Where(m => m.MovieId == id).FirstOrDefaultAsync();
 
             if (query is null)
                 return NotFound();
